@@ -5,7 +5,6 @@
 .cxx/
 
 /.gradle/
-/local.properties
 /.idea/caches
 /.idea/codeStyles/
 /.idea/gradle.xml
