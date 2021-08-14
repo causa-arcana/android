@@ -17,10 +17,8 @@ class MainActivity : AppCompatActivity() {
             contentHtml,
         )
 
-        val fullHtml = htmlGenerator.fullHtml()
-        val encodedFullHtml = Base64.encodeToString(fullHtml.toByteArray(), Base64.NO_PADDING)
-
-        mainWebView.loadData(encodedFullHtml, "text/html", "base64")
+        mainWebView.loadDataWithBaseURL("https://causa-arcana.com", htmlGenerator.fullHtml(),
+            "text/html", "UTF-8", "")
     }
 
     companion object {
@@ -56,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
             <div class="d-flex justify-content-center">
                 <figure class="nice-figure">
-                    <img src="https://causa-arcana.com/assets/images/blog/decentralized-vs-distributed-wrong.png"
+                    <img src="file:///android_asset/decentralized-vs-distributed-wrong.png"
                          alt='Та самая "неправильная" картинка.'/>
                     <figcaption>
                         Та самая &ldquo;неправильная&rdquo; картинка.
@@ -93,7 +91,7 @@ class MainActivity : AppCompatActivity() {
 
             <div class="d-flex justify-content-center">
                 <figure class="nice-figure">
-                    <img src="https://causa-arcana.com/assets/images/blog/network-topologies.png"
+                    <img src="file:///android_asset/network-topologies.png"
                          alt="Классификация сетевых топологий. Возможно, тоже неправильная или неполная."/>
                     <figcaption>
                         Классификация сетевых топологий. Возможно, тоже неправильная или неполная.
