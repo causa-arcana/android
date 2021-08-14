@@ -33,8 +33,8 @@ class HtmlGenerator(private val title: String, private val contentHtml: String) 
 
     private fun fullCss(): String {
         return """
-        body {
-            background-color: #FFFF00;
+        img {
+            max-width: 100%;
         }
         """
     }

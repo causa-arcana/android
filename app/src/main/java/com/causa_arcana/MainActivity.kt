@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
             <div class="d-flex justify-content-center">
                 <figure class="nice-figure">
-                    <img src="../../../../assets/images/blog/decentralized-vs-distributed-wrong.png"
+                    <img src="https://causa-arcana.com/assets/images/blog/decentralized-vs-distributed-wrong.png"
                          alt='Та самая "неправильная" картинка.'/>
                     <figcaption>
                         Та самая &ldquo;неправильная&rdquo; картинка.
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
 
             <div class="d-flex justify-content-center">
                 <figure class="nice-figure">
-                    <img src="../../../../assets/images/blog/network-topologies.png"
+                    <img src="https://causa-arcana.com/assets/images/blog/network-topologies.png"
                          alt="Классификация сетевых топологий. Возможно, тоже неправильная или неполная."/>
                     <figcaption>
                         Классификация сетевых топологий. Возможно, тоже неправильная или неполная.
