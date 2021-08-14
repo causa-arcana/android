@@ -12,21 +12,39 @@ class MainActivity : AppCompatActivity() {
 
         val mainWebView: WebView = findViewById(R.id.mainWebView)
 
-        val html = """
-            <!DOCTYPE html>
-            <html>
-                <head>
-                    <meta charset="utf-8"/>
-                </head>
-                <body>
-                    <h1>Hello, World!</h1>
-                    <p>This text is rendered with WebView.</p>
-                </body>
-            </html>
-        """.trimIndent()
+        val contentHtml = """
+        <h1>Hello, World!</h1>
+        <p>This text is rendered with WebView.</p>
+        """
 
-        val encodedHtml = Base64.encodeToString(html.toByteArray(), Base64.NO_PADDING)
+        val fullHtml = fullHtml(contentHtml)
+        val encodedFullHtml = Base64.encodeToString(fullHtml.toByteArray(), Base64.NO_PADDING)
 
-        mainWebView.loadData(encodedHtml, "text/html", "base64")
+        mainWebView.loadData(encodedFullHtml, "text/html", "base64")
+    }
+
+    private fun fullHtml(contentHtml: String): String {
+        return """
+        <!DOCTYPE html>
+        <html>
+            <head>${headInnerHtml()}</head>
+            <body>$contentHtml</body>
+        </html>
+        """
+    }
+
+    private fun headInnerHtml(): String {
+        return """
+        <meta charset="utf-8"/>
+        <style>${fullCss()}</style>
+        """
+    }
+
+    private fun fullCss(): String {
+        return """
+        body {
+            background-color: #FFFF00;
+        }
+        """
     }
 }
