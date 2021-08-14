@@ -12,7 +12,11 @@ class MainActivity : AppCompatActivity() {
 
         val mainWebView: WebView = findViewById(R.id.mainWebView)
 
-        val htmlGenerator = HtmlGenerator(contentHtml)
+        val htmlGenerator = HtmlGenerator(
+            "Почему сложно писать о передовых информационных технологиях?",
+            contentHtml,
+        )
+
         val fullHtml = htmlGenerator.fullHtml()
         val encodedFullHtml = Base64.encodeToString(fullHtml.toByteArray(), Base64.NO_PADDING)
 
