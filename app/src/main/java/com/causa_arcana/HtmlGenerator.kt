@@ -33,6 +33,10 @@ class HtmlGenerator(private val title: String, private val contentHtml: String) 
 
     private fun fullCss(): String {
         return """
+        article {
+            word-break: break-word;
+            word-wrap: break-word;
+        }
         img {
             max-width: 100%;
         }
