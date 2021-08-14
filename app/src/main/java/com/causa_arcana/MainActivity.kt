@@ -2,7 +2,6 @@ package com.causa_arcana
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Base64
 import android.webkit.WebView
 
 class MainActivity : AppCompatActivity() {
@@ -12,13 +11,16 @@ class MainActivity : AppCompatActivity() {
 
         val mainWebView: WebView = findViewById(R.id.mainWebView)
 
+        val customWebViewClient = CustomWebViewClient(applicationContext)
+        mainWebView.webViewClient = customWebViewClient
+
         val htmlGenerator = HtmlGenerator(
             "Почему сложно писать о передовых информационных технологиях?",
             contentHtml,
         )
 
         mainWebView.loadDataWithBaseURL("https://causa-arcana.com", htmlGenerator.fullHtml(),
-            "text/html", "UTF-8", "")
+            "text/html", "utf-8", "")
     }
 
     companion object {
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
             <div class="d-flex justify-content-center">
                 <figure class="nice-figure">
-                    <img src="file:///android_asset/decentralized-vs-distributed-wrong.png"
+                    <img src="https://causa-arcana.com/assets/images/blog/decentralized-vs-distributed-wrong.png"
                          alt='Та самая "неправильная" картинка.'/>
                     <figcaption>
                         Та самая &ldquo;неправильная&rdquo; картинка.
@@ -91,7 +93,7 @@ class MainActivity : AppCompatActivity() {
 
             <div class="d-flex justify-content-center">
                 <figure class="nice-figure">
-                    <img src="file:///android_asset/network-topologies.png"
+                    <img src="https://causa-arcana.com/assets/images/blog/network-topologies.png"
                          alt="Классификация сетевых топологий. Возможно, тоже неправильная или неполная."/>
                     <figcaption>
                         Классификация сетевых топологий. Возможно, тоже неправильная или неполная.
