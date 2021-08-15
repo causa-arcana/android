@@ -4,22 +4,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView
 
-class MainActivity : AppCompatActivity() {
+class ArticleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_article)
 
-        val mainWebView: WebView = findViewById(R.id.mainWebView)
+        val articleWebView: WebView = findViewById(R.id.articleWebView)
 
         val customWebViewClient = CustomWebViewClient(applicationContext)
-        mainWebView.webViewClient = customWebViewClient
+        articleWebView.webViewClient = customWebViewClient
 
         val htmlGenerator = HtmlGenerator(
             "Почему сложно писать о передовых информационных технологиях?",
             contentHtml,
         )
 
-        mainWebView.loadDataWithBaseURL("https://causa-arcana.com", htmlGenerator.fullHtml(),
+        articleWebView.loadDataWithBaseURL("https://causa-arcana.com", htmlGenerator.fullHtml(),
             "text/html", "utf-8", "")
     }
 
