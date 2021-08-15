@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class MainFragment(private val onArticlesListItemClick: () -> Unit) : Fragment() {
+class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,7 +25,11 @@ class MainFragment(private val onArticlesListItemClick: () -> Unit) : Fragment()
             view.findViewById(R.id.fragment_main__articles_list_rv)
         articlesListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         articlesListRecyclerView.adapter = ArticlesListRecyclerViewAdapter {
-            onArticlesListItemClick()
+            onArticleCardsListItemClick()
         }
+    }
+
+    private fun onArticleCardsListItemClick() {
+        findNavController().navigate(R.id.action_open_article)
     }
 }
