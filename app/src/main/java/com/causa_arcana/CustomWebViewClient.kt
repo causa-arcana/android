@@ -6,7 +6,7 @@ import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
 
-class CustomWebViewClient(private val context: Context): WebViewClient() {
+class CustomWebViewClient(private val context: Context) : WebViewClient() {
     companion object {
         private const val HOST = "causa-arcana.com"
         private const val SCHEME = "https"
