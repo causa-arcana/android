@@ -4,14 +4,19 @@ import org.junit.Test
 
 import org.junit.Assert.*
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun articleIdFromString() {
+        val articleId = ArticleId.fromString("2021-01-01-hello-world")
+        assertEquals(2021u, articleId.year)
+        assertEquals(1u, articleId.month)
+        assertEquals(1u, articleId.day)
+        assertEquals("hello-world", articleId.slug)
+    }
+
+    @Test
+    fun articleIdToString() {
+        val articleId = ArticleId(2021u, 1u, 1u, "hello-world")
+        assertEquals("2021-01-01-hello-world", articleId.toString())
     }
 }
