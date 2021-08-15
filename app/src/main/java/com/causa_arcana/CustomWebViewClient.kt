@@ -7,22 +7,48 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 
 class CustomWebViewClient(private val context: Context): WebViewClient() {
+    companion object {
+        private const val HOST = "causa-arcana.com"
+        private const val SCHEME = "https"
+        private const val NO_PORT = -1
+        private const val PORT = 443
+    }
+
     override fun shouldInterceptRequest(
         view: WebView?,
         request: WebResourceRequest,
     ): WebResourceResponse? {
-        val url = request.url.toString()
+        if (!relatedHost(request)) return super.shouldInterceptRequest(view, request)
 
-        if (url == "https://causa-arcana.com/assets/images/blog/decentralized-vs-distributed-wrong.png") {
-            return WebResourceResponse("image/png", "utf-8",
-                context.assets.open("decentralized-vs-distributed-wrong.png"))
+        if (!validComponents(request)) return WebResourceResponse(
+            "text/plain", "utf-8", 418, "I'm a teapot",
+            null, null,
+        )
+
+        return when (request.url.path) {
+            "/assets/images/blog/decentralized-vs-distributed-wrong.png" ->
+                WebResourceResponse("image/png", "utf-8",
+                    context.assets.open("decentralized-vs-distributed-wrong.png"))
+            "/assets/images/blog/network-topologies.png" ->
+                WebResourceResponse("image/png", "utf-8",
+                    context.assets.open("network-topologies.png"))
+            else ->
+                WebResourceResponse(
+                    "text/plain", "utf-8", 418, "I'm a teapot",
+                    null, null,
+                )
         }
+    }
 
-        if (url == "https://causa-arcana.com/assets/images/blog/network-topologies.png") {
-            return WebResourceResponse("image/png", "utf-8",
-                context.assets.open("network-topologies.png"))
-        }
+    private fun relatedHost(request: WebResourceRequest): Boolean {
+        return request.url.host?.lowercase() == HOST
+    }
 
-        return super.shouldInterceptRequest(view, request)
+    private fun validComponents(request: WebResourceRequest): Boolean {
+        return request.url.scheme?.lowercase() == SCHEME &&
+                request.url.userInfo == null &&
+                (request.url.port == NO_PORT || request.url.port == PORT) &&
+                request.url.query == null &&
+                request.url.fragment == null
     }
 }
