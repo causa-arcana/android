@@ -21,10 +21,10 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val articlesListRecyclerView: RecyclerView =
-            view.findViewById(R.id.fragment_main__articles_list_rv)
-        articlesListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        articlesListRecyclerView.adapter = ArticlesListRecyclerViewAdapter {
+        val articleCardsListRecyclerView: RecyclerView =
+            view.findViewById(R.id.fragment_main__article_cards_list_rv)
+        articleCardsListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        articleCardsListRecyclerView.adapter = ArticleCardsListRecyclerAdapter {
             onArticleCardsListItemClick()
         }
     }

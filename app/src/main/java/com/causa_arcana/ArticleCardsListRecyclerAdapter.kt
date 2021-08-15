@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ArticlesListRecyclerViewAdapter(private val onItemClick: () -> Unit) :
-    RecyclerView.Adapter<ArticlesListRecyclerViewAdapter.ViewHolder>()
+class ArticleCardsListRecyclerAdapter(private val onItemClick: () -> Unit) :
+    RecyclerView.Adapter<ArticleCardsListRecyclerAdapter.ViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
