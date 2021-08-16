@@ -20,10 +20,7 @@ class CustomWebViewClient(private val context: Context) : WebViewClient() {
     ): WebResourceResponse? {
         if (!relatedHost(request)) return super.shouldInterceptRequest(view, request)
 
-        if (!validComponents(request)) return WebResourceResponse(
-            "text/plain", "utf-8", 418, "I'm a teapot",
-            null, null,
-        )
+        if (!validComponents(request)) return teapotResponse()
 
         return when (request.url.path) {
             "/assets/images/blog/decentralized-vs-distributed-wrong.png" ->
@@ -33,10 +30,7 @@ class CustomWebViewClient(private val context: Context) : WebViewClient() {
                 WebResourceResponse("image/png", "utf-8",
                     context.assets.open("network-topologies.png"))
             else ->
-                WebResourceResponse(
-                    "text/plain", "utf-8", 418, "I'm a teapot",
-                    null, null,
-                )
+                teapotResponse()
         }
     }
 
@@ -50,5 +44,12 @@ class CustomWebViewClient(private val context: Context) : WebViewClient() {
                 (request.url.port == NO_PORT || request.url.port == PORT) &&
                 request.url.query == null &&
                 request.url.fragment == null
+    }
+
+    private fun teapotResponse(): WebResourceResponse {
+        return WebResourceResponse(
+            "text/plain", "utf-8", 418, "I'm a teapot",
+            null, null,
+        )
     }
 }
