@@ -24,13 +24,11 @@ class CustomWebViewClient(private val context: Context) : WebViewClient() {
 
         return when (request.url.path) {
             "/assets/images/blog/decentralized-vs-distributed-wrong.png" ->
-                WebResourceResponse("image/png", "utf-8",
-                    context.assets.open("decentralized-vs-distributed-wrong.png"))
+                assetResponse("image/png",
+                    "decentralized-vs-distributed-wrong.png")
             "/assets/images/blog/network-topologies.png" ->
-                WebResourceResponse("image/png", "utf-8",
-                    context.assets.open("network-topologies.png"))
-            else ->
-                teapotResponse()
+                assetResponse("image/png", "network-topologies.png")
+            else -> teapotResponse()
         }
     }
 
@@ -51,5 +49,10 @@ class CustomWebViewClient(private val context: Context) : WebViewClient() {
             "text/plain", "utf-8", 418, "I'm a teapot",
             null, null,
         )
+    }
+
+    private fun assetResponse(mimeType: String, assetFileName: String):
+            WebResourceResponse {
+        return WebResourceResponse(mimeType, "utf-8", context.assets.open(assetFileName))
     }
 }
