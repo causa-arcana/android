@@ -23,6 +23,10 @@ class CustomWebViewClient(private val context: Context) : WebViewClient() {
         if (!validComponents(request)) return teapotResponse()
 
         return when (request.url.path) {
+            "/blog/2021/08/06/writing-about-it.html" -> generatedHtmlResponse(
+                "Почему сложно писать о передовых информационных технологиях?",
+                "writing-about-it.html",
+            )
             "/assets/images/blog/decentralized-vs-distributed-wrong.png" ->
                 assetResponse("image/png",
                     "decentralized-vs-distributed-wrong.png")
@@ -49,6 +53,15 @@ class CustomWebViewClient(private val context: Context) : WebViewClient() {
             "text/plain", "utf-8", 418, "I'm a teapot",
             null, null,
         )
+    }
+
+    private fun generatedHtmlResponse(title: String, assetFileName: String):
+            WebResourceResponse {
+        val inputStream = context.assets.open(assetFileName)
+        val contentHtml = inputStream.bufferedReader().use { it.readText() }
+        val htmlGenerator = HtmlGenerator(title, contentHtml)
+        val data = htmlGenerator.fullHtml().byteInputStream()
+        return WebResourceResponse("text/html", "utf-8", data)
     }
 
     private fun assetResponse(mimeType: String, assetFileName: String):
