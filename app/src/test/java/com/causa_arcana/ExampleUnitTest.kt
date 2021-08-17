@@ -5,16 +5,17 @@ import org.junit.Test
 import org.junit.Assert.*
 
 class ExampleUnitTest {
-    private val articleId1 = ArticleId(2021u, 1u, 1u, "hello-world")
-    private val articleId2 = ArticleId(2000u, 6u, 24u, "123")
-    private val articleId3 = ArticleId(3000u, 12u, 6u, "0foo-1-2")
+    private val articleId1 = ArticleId(2021, 1,  1,  "hello-world")
+    private val articleId2 = ArticleId(2000, 6,  24, "123")
+    private val articleId3 = ArticleId(3000, 12, 6,  "0foo-1-2")
 
     @Test
     fun articleIdFromString() {
         val articleId = ArticleId.fromString("2021-01-01-hello-world")
-        assertEquals(2021u, articleId.year)
-        assertEquals(1u, articleId.month)
-        assertEquals(1u, articleId.day)
+
+        assertEquals(2021,          articleId.year)
+        assertEquals(1,             articleId.month)
+        assertEquals(1,             articleId.day)
         assertEquals("hello-world", articleId.slug)
     }
 

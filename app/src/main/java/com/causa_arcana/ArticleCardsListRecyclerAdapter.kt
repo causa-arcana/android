@@ -11,7 +11,7 @@ class ArticleCardsListRecyclerAdapter(private val onItemClick: () -> Unit) :
 {
     private val articleCardsList = listOf(
         ArticleCard(
-            ArticleId(2021u, 8u, 6u, "writing-about-it"),
+            ArticleId(2021, 8, 6, "writing-about-it"),
             "Почему сложно писать о передовых информационных технологиях?",
             """
                 Однажды мы выпустили статью “Децентрализованные сервисы против распределённых”, где
@@ -20,7 +20,7 @@ class ArticleCardsListRecyclerAdapter(private val onItemClick: () -> Unit) :
             """.replace("\\s+".toRegex(), " "),
         ),
         ArticleCard(
-            ArticleId(2020u, 6u, 4u, "decentralized-vs-distributed"),
+            ArticleId(2020, 6, 4, "decentralized-vs-distributed"),
             "Децентрализованные сервисы против распределённых",
             """
                 Более правильная, но менее известная схема, показывающая разницу между
@@ -29,7 +29,7 @@ class ArticleCardsListRecyclerAdapter(private val onItemClick: () -> Unit) :
             """.replace("\\s+".toRegex(), " "),
         ),
         ArticleCard(
-            ArticleId(2021u, 7u, 28u, "yggdrasil"),
+            ArticleId(2021, 7, 28, "yggdrasil"),
             "Заметки об Yggdrasil: качество кода, безопасность, DNS",
             """
                 Сейчас сложно продвигать сеть Yggdrasil для массового использования. Она сложна для
