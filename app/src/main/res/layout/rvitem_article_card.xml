@@ -2,32 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/article_cover"
-        app:srcCompat="@drawable/ic_launcher_foreground"/>
+    android:layout_height="wrap_content"
+    android:padding="10dp">
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/border"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/article_cover"
+            app:srcCompat="@drawable/ic_launcher_foreground"/>
 
         <TextView
             android:id="@+id/rvitem_article_card__title_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
             tools:text="Hello, World!"/>
 
         <TextView
             android:id="@+id/rvitem_article_card__summary_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a massa nulla."/>
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
 
     </LinearLayout>
 
